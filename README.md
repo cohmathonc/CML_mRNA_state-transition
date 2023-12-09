@@ -1,5 +1,4 @@
-# CML_mRNA_state-transition
+# State-transition Modeling of Blood Transcriptome Predicts Disease Evolution and Treatment Response in Chronic Myeloid Leukemia
 
-This repository contains code used for analysis and to generate figures for: https://doi.org/10.1101/2023.10.11.561908  
-
-## WORK IN PROGRESS
+## :::WORK IN PROGRESS:::
+Future site of the code used for analysis and figures for: https://doi.org/10.1101/2023.10.11.561908  
