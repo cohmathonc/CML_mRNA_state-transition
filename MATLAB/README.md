@@ -5,4 +5,4 @@ These MATLAB files were used to perform all state-transition modeling and surviv
 
 ## :::WORK IN PROGRESS::
 
-Organization and annotation of the files in this directory coming soon...
+Coming soon: further documentation and annotation to describe the workflow to reproduce the analysis conducted in [manuscript](https://www.biorxiv.org/content/10.1101/2023.10.11.561908v2)
