@@ -5,7 +5,7 @@ The R notebook contains all analysis code in sequential order required to repord
 
 ## Setup
 1. **Get data**
-  The only data required to run the R notebook is the `SummarizedExperiment` object saved as an R `rds` file located here: [data](https://github.com/cohmathonc/CML_mRNA_state-transition/R/Robj_dat.se_final.rds).
+  The only data required to run the R notebook is the `SummarizedExperiment` object saved as an R `rds` file located at this *temporary location*: [data](https://drive.google.com/file/d/1q0UCuB5h-9lyRIZBSrIQ-joanfVms0ZK/view?usp=sharing).
 
 2. **Run notebook**
    A single [notebook](https://github.com/cohmathonc/CML_mRNA_state-transition/R/analysis+figures_reproducibility.R) includes all analysis performed in the [manuscript](https://www.biorxiv.org/content/10.1101/2023.10.11.561908v2). The required R libraries are listed in the "Setup" section. When run sequentially, the notebook will perform all analysis, generate intermediate objects and figures, and generate all figures included in the manuscript. Successfully running the [notebook](https://github.com/cohmathonc/CML_mRNA_state-transition/R/analysis+figures_reproducibility.R) will product the following output directories:
