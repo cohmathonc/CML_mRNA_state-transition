@@ -1,11 +1,13 @@
 # State-transition Modeling of Blood Transcriptome Predicts Disease Evolution and Treatment Response in Chronic Myeloid Leukemia
 
+Repository for all code used for analysis and figures for: https://doi.org/10.1101/2023.10.11.561908  
+
 ## :::WORK IN PROGRESS:::
-Future site of the code used for analysis and figures for: https://doi.org/10.1101/2023.10.11.561908  
+Working on additional documention and annotation on each workflow to improve usability; stay tuned...
 
 ## R
 
-All RNA-seq analysis and figure generation for the [manuscript](https://www.biorxiv.org/content/10.1101/2023.10.11.561908v2).
+All RNA-seq analysis and processing.
 
 ## MATLAB
 
