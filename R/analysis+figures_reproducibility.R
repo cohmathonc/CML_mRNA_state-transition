@@ -2299,17 +2299,7 @@
   state.5[which(colData(dat.se)$CML_space >= s5[4] )] <- "s1"
   meta.df[["state.5"]] <- state.5
   
-  
-  ### ttest ###
-  #c3 vs ctl
-  t.test(meta.df$d_myeloid[which(meta.df$state_rx=="c3"&meta.df$Group=="B")], meta.df$d_myeloid[which(meta.df$Group=="C")])
-  #c3 vs c1
-  t.test(meta.df$d_myeloid[which(meta.df$state_rx=="c3"&meta.df$Group=="B")], meta.df$d_myeloid[which(meta.df$state_rx=="c1"&meta.df$Group=="B")])
-  #c2 vs c1
-  t.test(meta.df$d_myeloid[which(meta.df$state_rx=="c2"&meta.df$Group=="B")], meta.df$d_myeloid[which(meta.df$state_rx=="c1"&meta.df$Group=="B")])
-  #c3 vs c2
-  t.test(meta.df$d_myeloid[which(meta.df$state_rx=="c3"&meta.df$Group=="B")], meta.df$d_myeloid[which(meta.df$state_rx=="c2"&meta.df$Group=="B")])
-  
+
   ### spline ttest ###
   #c3 vs ctl
   t.test(meta.df$s.d_myeloid[which(meta.df$state_rx=="c3"&meta.df$Group=="B")], meta.df$s.d_myeloid[which(meta.df$Group=="C")])
@@ -2321,25 +2311,6 @@
   t.test(meta.df$s.d_myeloid[which(meta.df$state_rx=="c3"&meta.df$Group=="B")], meta.df$s.d_myeloid[which(meta.df$state_rx=="c2"&meta.df$Group=="B")])
   
 
-  #remove pre-treatment A and D
-  rmTrt <- which(meta.df$rx_class=="D.pre" | meta.df$rx_class=="A.pre" ) * -1
-     
-  #find which state each sample has max dmdt in
-  dm.max.state <- rep(NA, dim(meta.df)[1])
-  for (s in unique(colData(dat.se)$mouse_id)) {
-    group <- meta.df$Group[which(meta.df$mouse_id==s)][1]
-    #get data
-    dm <- meta.df$d_myeloid[which(meta.df$mouse_id==s)]
-    srx <- meta.df$state_rx[which(meta.df$mouse_id==s)]
-    max.st <- srx[which(dm==max(dm))]
-    dm.max.state[which(meta.df$mouse_id==s)] <- as.character(max.st)
-  }
-  dm.max.state <- factor(dm.max.state, levels=levels(meta.df$state_rx))
-  meta.df[["dm.max.state"]] <- dm.max.state
-
-  #which CML samples have c2 and c3 max growth rates
-  unique(meta.df[which(meta.df$dm.max.state=="c2"&meta.df$Group=="B"),]$mouse_id)
-  unique(meta.df[which(meta.df$dm.max.state=="c3"&meta.df$Group=="B"),]$mouse_id)
   
   ### ADD DATA TO "dat.se"
   # !!!using splined data as THE derivative!!! i.e. s.d_myeloid is input as d_myeloid
@@ -3008,7 +2979,8 @@
   #:note: each DEG comparison only contains data for the genes that were able to be tested; untested genes have pvalue, l2fc, and means -> NA
   ### !!!NOTE!!! CML contribution ASSUMES that all comparisons use the more control-like set as reference
   ###     Expression direction is assumed to be oriented so that increses in expression move away from controls (!ONLY TRUE IF CONTROL-LIKE SAMPLE IS THE REFERENCE!)
-  rownames(rV) <- rowData(dat.se[lowExpRM,])$gene_name #temp fix for 20230521 save not including rownames
+  rownames(rV) <- rowData(dat.se[lowExpRM,])$gene_name #add row names
+  amin <- minexp #set offset value
   gene.df <- data.frame("gene"=rownames(rV), "gene_id"=rowData(dat.se[lowExpRM,])$gene_id, "eigengenes"=rV[,2], "PC1"=rV[,1])
   deglist <- list(dg.b3.c, dg.b2.c, dg.b1.c, dg.b2.b1, dg.b3.b2, dg.b3.b1, dg.apost.c, dg.dpost.c, dg.drx.c, dg.dpost.b3, dg.c.evl, dg.c.lve, dg.apost.cL, dg.rx.da  )
   degids <- list(ig.b3.c, ig.b2.c, ig.b1.c, ig.b2.b1, ig.b3.b2, ig.b3.b1, ig.apost.c, ig.dpost.c, ig.drx.c, ig.dpost.b3, ig.c.evl, ig.c.lve, ig.apost.cL, ig.rx.da )
