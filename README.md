@@ -2,9 +2,6 @@
 
 Repository for all code used for analysis and figures for: https://doi.org/10.1101/2023.10.11.561908  
 
-## :::WORK IN PROGRESS:::
-Working on additional documention and annotation on each workflow to improve usability; stay tuned...
-
 ## R
 
 All RNA-seq analysis and processing.
